@@ -1,4 +1,4 @@
-import { CssJsx } from 'css.js';
+import { CssJsx } from 'css.jsx';
 import deindent from 'deindent';
 
 interface Config {
