@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Write your CSS in JSX like syntax",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tzachbon/css.jsx.git"
+  },
   "workspaces": [
     "packages/*"
   ],
@@ -15,7 +19,15 @@
     "test": "mocha \"./packages/*/dist/test/**/*.spec.js\" --parallel --timeout 10000",
     "prettify": "npx prettier . --write"
   },
-  "keywords": [],
+  "keywords": [
+    "css",
+    "jsx",
+    "preprocess",
+    "scss",
+    "typescript",
+    "javascript",
+    "react"
+  ],
   "author": "Tzach Bonfil <tzachbonfil@gmail.com>",
   "license": "ISC",
   "devDependencies": {
@@ -31,6 +43,6 @@
     "lerna": "^4.0.0",
     "mocha": "^9.1.0",
     "rimraf": "^3.0.2",
-    "typescript": "^4.3.5"
+    "typescript": "^4.4.2"
   }
 }
