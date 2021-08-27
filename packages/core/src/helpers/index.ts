@@ -1,2 +1,2 @@
-export { getAttributes } from './get-attributes';
-export { handleNestedTextInRule } from './handle-nested-text-in-rule';
+export * from './get-attributes';
+export * from './handle-nested-text-in-rule';
