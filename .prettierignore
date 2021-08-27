@@ -1,0 +1,5 @@
+dist
+*.st.css
+/tsconfig.base.json
+/packages/create-stylable-app/template/*/tsconfig.json
+*.md

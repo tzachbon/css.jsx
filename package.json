@@ -1,0 +1,35 @@
+{
+  "name": "css-x",
+  "version": "1.0.0",
+  "description": "Write your CSS in JSX like syntax",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "clean": "rimraf ./packages/*/{dist,cjs,esm}",
+    "build": "tsc --build",
+    "watch": "yarn build -w",
+    "lint": "eslint . -f codeframe",
+    "pretest": "yarn build",
+    "test": "mocha \"./packages/*/dist/test/**/*.spec.js\" --parallel --timeout 10000",
+    "prettify": "npx prettier . --write"
+  },
+  "keywords": [],
+  "author": "Tzach Bonfil <tzachbonfil@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/types": "^7.15.0",
+    "@types/babel__traverse": "^7.14.2",
+    "@types/chai": "^4.2.21",
+    "@types/deindent": "^0.1.0",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.7.2",
+    "chai": "^4.3.4",
+    "deindent": "^0.1.0",
+    "eslint": "^7.32.0",
+    "mocha": "^9.1.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.3.5"
+  }
+}
