@@ -1,10 +1,10 @@
-import { generateCssJsResult } from './helpers/generate-cssjs-result';
+import { generateCssJsxResult } from './helpers/generate-cssjsx-result';
 import { expect } from 'chai';
 import type { Rule, Declaration } from 'postcss';
 
 describe('Selectors', () => {
     it('should handle simple selector', () => {
-        const { cssAst } = generateCssJsResult({
+        const { cssAst } = generateCssJsxResult({
             entry: '/entry.css.js',
             files: {
                 '/entry.css.js': `
@@ -24,7 +24,7 @@ describe('Selectors', () => {
     });
 
     it('should handle simple nested selector', () => {
-        const { cssAst } = generateCssJsResult({
+        const { cssAst } = generateCssJsxResult({
             entry: '/entry.css.js',
             files: {
                 '/entry.css.js': `

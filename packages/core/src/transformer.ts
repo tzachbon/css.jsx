@@ -1,20 +1,20 @@
 import type { Root } from 'postcss';
 import type { Diagnostics } from './diagnostics';
-import type { CssJsMeta } from './types';
+import type { CssJsxMeta } from './types';
 
-export interface CssJsTransformerParams {
+export interface CssJsxTransformerParams {
     root: string;
     diagnostics: Diagnostics;
 }
 
-export class CssJsTransformer {
-    private constructor(private diagnostics: CssJsTransformerParams['diagnostics']) {}
+export class CssJsxTransformer {
+    private constructor(private diagnostics: CssJsxTransformerParams['diagnostics']) {}
 
-    static create({ diagnostics }: CssJsTransformerParams) {
+    static create({ diagnostics }: CssJsxTransformerParams) {
         return new this(diagnostics);
     }
 
-    public transform({ ast: { css } }: CssJsMeta): Root {
+    public transform({ ast: { css } }: CssJsxMeta): Root {
         this.diagnostics.info('begin transform');
 
         const output = css.clone();

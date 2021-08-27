@@ -1,36 +1,36 @@
-import { CssJsAnalyzer } from './analyzer';
-import { CssJsTransformer } from './transformer';
+import { CssJsxAnalyzer } from './analyzer';
+import { CssJsxTransformer } from './transformer';
 import { Diagnostics } from './diagnostics';
 import { parse } from '@babel/parser';
-import type { CssJsMeta } from './types';
+import type { CssJsxMeta } from './types';
 
-export interface CssJsParams {
+export interface CssJsxParams {
     root: string;
-    analyzer?: CssJsAnalyzer;
-    transformer?: CssJsTransformer;
+    analyzer?: CssJsxAnalyzer;
+    transformer?: CssJsxTransformer;
     diagnostics?: Diagnostics;
 }
 
-export class CssJs {
+export class CssJsx {
     private constructor(
-        private root: CssJsParams['root'],
-        private diagnostics: NonNullable<CssJsParams['diagnostics']>,
-        private analyzer: NonNullable<CssJsParams['analyzer']>,
-        private transformer: NonNullable<CssJsParams['transformer']>
+        private root: CssJsxParams['root'],
+        private diagnostics: NonNullable<CssJsxParams['diagnostics']>,
+        private analyzer: NonNullable<CssJsxParams['analyzer']>,
+        private transformer: NonNullable<CssJsxParams['transformer']>
     ) {}
 
-    static create({ root, analyzer, transformer, diagnostics }: CssJsParams) {
+    static create({ root, analyzer, transformer, diagnostics }: CssJsxParams) {
         diagnostics ??= new Diagnostics();
 
         return new this(
             root,
             diagnostics,
-            analyzer ?? CssJsAnalyzer.create({ diagnostics }),
-            transformer ?? CssJsTransformer.create({ root, diagnostics })
+            analyzer ?? CssJsxAnalyzer.create({ diagnostics }),
+            transformer ?? CssJsxTransformer.create({ root, diagnostics })
         );
     }
 
-    public process(meta: string | CssJsMeta) {
+    public process(meta: string | CssJsxMeta) {
         this.diagnostics.info('begin process in ' + this.root);
 
         if (typeof meta === 'string') {

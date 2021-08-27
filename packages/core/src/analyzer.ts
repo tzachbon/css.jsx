@@ -4,30 +4,30 @@ import type { File, JSXElement, Node } from '@babel/types';
 import * as postcss from 'postcss';
 import type { Diagnostics } from './diagnostics';
 import { getAttributes, handleNestedTextInRule } from './helpers';
-import type { CssJsMeta } from './types';
+import type { CssJsxMeta } from './types';
 
-export interface CssJsAnalyzerParams {
+export interface CssJsxAnalyzerParams {
     diagnostics: Diagnostics;
 }
 
-export class CssJsAnalyzer {
-    private constructor(protected diagnostics: CssJsAnalyzerParams['diagnostics']) {}
+export class CssJsxAnalyzer {
+    private constructor(protected diagnostics: CssJsxAnalyzerParams['diagnostics']) {}
 
-    static create({ diagnostics }: CssJsAnalyzerParams) {
+    static create({ diagnostics }: CssJsxAnalyzerParams) {
         return new this(diagnostics);
     }
 
-    analyze(cssjs: ParseResult<File>): CssJsMeta {
+    analyze(cssjsx: ParseResult<File>): CssJsxMeta {
         this.diagnostics.info('begin analyze');
 
         const css = postcss.root();
 
-        this.onTraverse(cssjs, css);
+        this.onTraverse(cssjsx, css);
 
         return {
             ast: {
                 css,
-                cssjs,
+                cssjsx,
             },
         };
     }
