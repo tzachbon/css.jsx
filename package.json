@@ -17,7 +17,8 @@
     "lint": "eslint . -f codeframe",
     "pretest": "yarn build",
     "test": "mocha \"./packages/*/dist/test/**/*.spec.js\" --parallel --timeout 10000",
-    "prettify": "npx prettier . --write"
+    "prettify": "npx prettier . --write",
+    "deploy": "yarn lerna publish"
   },
   "keywords": [
     "css",
