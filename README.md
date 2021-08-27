@@ -3,7 +3,7 @@
 Write your CSS in JSX.\
 This is the syntax for jsx lovers. (a nice experiment)
 
-> disclaimer, this project is work in progress and I'm the only maintainer. If you would like to collab, feel free to create an issue regarding that we let's work together
+> disclaimer, this project is work in progress and I'm the only maintainer. If you would like to collab, feel free to create an issue regarding that and we let's work together
 
 ## Vision
 
