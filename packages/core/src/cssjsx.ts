@@ -1,7 +1,8 @@
 import { CssJsxAnalyzer } from './analyzer';
-import { CssJsxTransformer } from './transformer';
+import { CssJsxTransformer, NamespaceResolver } from './transformer';
 import { Diagnostics } from './diagnostics';
 import { parse } from '@babel/parser';
+import { namespaceResolver } from './namespace-resolver';
 import type { CssJsxMeta } from './types';
 
 export interface CssJsxParams {
@@ -9,6 +10,7 @@ export interface CssJsxParams {
     analyzer?: CssJsxAnalyzer;
     transformer?: CssJsxTransformer;
     diagnostics?: Diagnostics;
+    namespaceResolver?: NamespaceResolver;
 }
 
 export class CssJsx {
@@ -19,14 +21,26 @@ export class CssJsx {
         private transformer: NonNullable<CssJsxParams['transformer']>
     ) {}
 
-    static create({ root, analyzer, transformer, diagnostics }: CssJsxParams) {
+    static create({
+        root,
+        analyzer,
+        transformer,
+        diagnostics,
+        namespaceResolver: namespaceResolverFn,
+    }: CssJsxParams) {
         diagnostics ??= new Diagnostics();
+        namespaceResolverFn ??= namespaceResolver;
 
         return new this(
             root,
             diagnostics,
             analyzer ?? CssJsxAnalyzer.create({ diagnostics }),
-            transformer ?? CssJsxTransformer.create({ root, diagnostics })
+            transformer ??
+                CssJsxTransformer.create({
+                    root,
+                    diagnostics,
+                    namespaceResolver: namespaceResolverFn,
+                })
         );
     }
 
@@ -38,13 +52,14 @@ export class CssJsx {
             meta = this.analyzer.analyze(parsedResult);
         }
 
-        const { css: cssAst, reports } = this.transformer.transform(meta);
+        const { css: cssAst, reports, exports } = this.transformer.transform(meta);
         const css = cssAst.toString();
 
         return {
             cssAst,
             css,
             reports,
+            exports,
         };
     }
 }

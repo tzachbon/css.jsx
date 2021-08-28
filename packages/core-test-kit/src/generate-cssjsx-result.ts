@@ -11,12 +11,13 @@ export function generateCssJsxResult(config: Config) {
         root: config.entry,
     });
 
-    const { css, cssAst, reports } = cssjsx.process(deindent(config.files[config.entry]));
+    const { css, cssAst, reports, exports } = cssjsx.process(deindent(config.files[config.entry]));
 
     return {
         css,
         cssAst,
         reports,
         invalidReports: reports.filter((r) => r.type !== 'info'),
+        exports,
     };
 }
