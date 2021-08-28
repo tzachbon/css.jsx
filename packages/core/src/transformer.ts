@@ -1,5 +1,5 @@
 import type { Rule, Root } from 'postcss';
-import type { Diagnostics } from './diagnostics';
+import type { Diagnostic, Diagnostics } from './diagnostics';
 import { getParentOfNestedRule, isNestedNode } from './helpers';
 import type { CssJsxMeta } from './types';
 
@@ -8,6 +8,10 @@ export interface CssJsxTransformerParams {
     diagnostics: Diagnostics;
 }
 
+export interface TransformReturnType {
+    css: Root;
+    reports: Diagnostic[];
+}
 export class CssJsxTransformer {
     private constructor(private diagnostics: CssJsxTransformerParams['diagnostics']) {}
 
@@ -15,7 +19,7 @@ export class CssJsxTransformer {
         return new this(diagnostics);
     }
 
-    public transform({ ast: { css } }: CssJsxMeta): Root {
+    public transform({ ast: { css } }: CssJsxMeta): TransformReturnType {
         this.diagnostics.info('begin transform');
 
         css.walkRules((node) => {
@@ -32,6 +36,9 @@ export class CssJsxTransformer {
             }
         });
 
-        return css;
+        return {
+            css,
+            reports: this.diagnostics.reports,
+        };
     }
 }

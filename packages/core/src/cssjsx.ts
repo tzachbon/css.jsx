@@ -38,12 +38,13 @@ export class CssJsx {
             meta = this.analyzer.analyze(parsedResult);
         }
 
-        const cssAst = this.transformer.transform(meta);
+        const { css: cssAst, reports } = this.transformer.transform(meta);
         const css = cssAst.toString();
 
         return {
             cssAst,
             css,
+            reports,
         };
     }
 }

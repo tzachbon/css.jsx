@@ -1,14 +1,13 @@
-import { generateCssJsxResult } from './helpers/generate-cssjsx-result';
 import * as chai from 'chai';
 import type { Rule, Declaration } from 'postcss';
-import { snapshotPlugin } from '@cssjsx/core-test-kit';
+import { snapshotPlugin, generateCssJsxResult } from '@cssjsx/core-test-kit';
 const { expect } = chai;
 
 chai.use(snapshotPlugin);
 
 describe('Selectors', () => {
     it('should handle simple selector', function () {
-        const { cssAst } = generateCssJsxResult({
+        const { cssAst, invalidReports } = generateCssJsxResult({
             entry: '/entry.css.js',
             files: {
                 '/entry.css.js': `
@@ -27,10 +26,11 @@ describe('Selectors', () => {
         expect(decl.value).to.eql('red');
 
         expect(cssAst.toString()).to.matchSnapshot(this);
+        expect(invalidReports).to.have.length(0);
     });
 
     it('should handle simple nested selector', function () {
-        const { cssAst } = generateCssJsxResult({
+        const { cssAst, invalidReports } = generateCssJsxResult({
             entry: '/entry.css.js',
             files: {
                 '/entry.css.js': `
@@ -62,10 +62,11 @@ describe('Selectors', () => {
         expect(nestedRuleDecl.value).to.eql('red');
 
         expect(cssAst.toString()).to.matchSnapshot(this);
+        expect(invalidReports).to.have.length(0);
     });
 
     it('should handle multi nested selector', function () {
-        const { cssAst } = generateCssJsxResult({
+        const { cssAst, invalidReports } = generateCssJsxResult({
             entry: '/entry.css.js',
             files: {
                 '/entry.css.js': `
@@ -108,5 +109,6 @@ describe('Selectors', () => {
         expect(multiNestedRuleDecl.value).to.eql('gold');
 
         expect(cssAst.toString()).to.matchSnapshot(this);
+        expect(invalidReports).to.have.length(0);
     });
 });

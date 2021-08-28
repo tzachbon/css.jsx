@@ -8,14 +8,14 @@ type DiagnosticTypeMethods = {
     [key in DiagnosticType]: DiagnosticsMethod;
 };
 
-interface Diagnostic {
+export interface Diagnostic {
     message: string;
     type: DiagnosticType;
     node?: Node | null;
 }
 
 export class Diagnostics implements DiagnosticTypeMethods {
-    reports: Diagnostic[] = [];
+    public reports: Diagnostic[] = [];
 
     private add(type: DiagnosticType, message: string, node?: Node | null) {
         this.reports.push({ type, message, node });
