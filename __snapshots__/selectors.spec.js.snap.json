@@ -1,0 +1,5 @@
+{
+  "Selectors : should handle multi nested selector 1": ".btn {\n        color: blue\n}\n         .btn:hover {\n            color: red\n        }\n         .btn:hover li {\n                color: gold\n            }",
+  "Selectors : should handle simple selector 1": ".btn {\n    color: red\n}",
+  "Selectors : should handle simple nested selector 1": ".btn {\n        color: blue;\n}\n         .btn:hover {\n            color: red;\n        }"
+}

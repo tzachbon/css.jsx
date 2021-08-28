@@ -3438,6 +3438,11 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
   resolved "https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
+mocha-chai-snapshot@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/mocha-chai-snapshot/-/mocha-chai-snapshot-1.0.0.tgz#6c8747a2fa8d5b3b2d1d0600bb3e644b0fd5c913"
+  integrity sha512-ZXdoO2ZUVik5yz36sdGDQ4LuSgjadpreeJO0A75kMO5Q6cS8Qh3FJcGllYbMZii2wQB0c6Bx1vKTHW/MfiqG1w==
+
 mocha@^9.1.0:
   version "9.1.0"
   resolved "https://registry.npmjs.org/mocha/-/mocha-9.1.0.tgz#0a7aa6fc4f59d1015d4e11747d9104b752553c67"

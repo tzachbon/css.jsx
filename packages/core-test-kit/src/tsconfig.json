@@ -1,0 +1,8 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "../dist",
+    "types": ["node", "mocha"]
+  },
+  "references": [{ "path": "../../core/src" }]
+}
