@@ -29,8 +29,8 @@ We want to allow our users to write CSS in JSX way:
 
 ### `my-component.js` (this will output 2 files):
 ```jsx
-
-const { classes } = (
+import { css } from 'css.jsx'
+const { classes } = css(
   <>
   <rule selector="h1">
     color: red;
@@ -43,7 +43,7 @@ const { classes } = (
       </rule>
   </rule>
 </>
-)
+);
 
 const Component = () => <button className={classes.btn}>My Button</button>
 ```
